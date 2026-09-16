@@ -17,14 +17,6 @@ Version 2 expands the experience to roughly 15–20 minutes and adds:
 - An APA references page accessible from the final screen.
 - A real `images/` folder containing the local cell illustration.
 
-## Important scientific design choice
-
-The virtual slide lab does NOT claim that routine H&E microscopy lets students directly see individual SARS-CoV-2 virions. Instead, it teaches that:
-
-- H&E is useful for tissue architecture and pathology.
-- Virus-specific immunohistochemistry can detect viral antigen in tissue.
-- Electron microscopy can resolve structures at a much smaller scale.
-
 ## Video
 
 The site currently embeds Scripps Research's:
@@ -32,21 +24,6 @@ The site currently embeds Scripps Research's:
 
 You can replace the YouTube video ID in `index.html` if your instructor prefers the video you originally suggested.
 
-## Hosting
-
-Upload all files/folders to a GitHub repository:
-
-- index.html
-- references.html
-- style.css
-- script.js
-- images/
-
-Then enable GitHub Pages from Settings → Pages → Deploy from a branch → main → /(root).
-
-The public URL will look like:
-
-https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/
 
 ## Image note
 
