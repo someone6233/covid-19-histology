@@ -22,5 +22,5 @@ Version 2 expands the experience to roughly 15–20 minutes and adds:
 The site currently embeds Scripps Research's:
 "How the Novel Coronavirus Infects a Cell: Science, Simplified"
 
-You can replace the YouTube video ID in `index.html` if your instructor prefers the video you originally suggested.
+You can replace the YouTube video ID in `index.html`
 
