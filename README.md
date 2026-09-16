@@ -1,4 +1,4 @@
-# COVID-19: Inside the Lung — Version 1
+# COVID-19 — Version 1
 
 This is a single-page interactive histology website for the Grade 7/8 assignment.
 
