@@ -422,7 +422,7 @@ const VIDEO_ID = "ZL1z3Uju-I0";
 const VIDEO_CHECKPOINTS = [
   { time: 40, prompt: "Based on what you just watched, which part of the airway does the video focus on?", options: ["The alveoli (air sacs)", "The fingernails", "The stomach"], correct: 0, explain: "The video is focused on the lungs and airway, especially the alveoli." },
   { time: 100, prompt: "What happens to the airway/lung tissue when it becomes inflamed and filled with fluid?", options: ["It becomes easier for oxygen to cross into the blood", "It becomes harder for oxygen to cross into the blood", "Nothing changes at all"], correct: 1, explain: "Inflammation and fluid buildup thicken the gas-exchange surface, making it harder for oxygen to get through." },
-  { time: 160, prompt: "Why does someone with damaged alveoli often feel short of breath?", options: ["Their bones are weaker", "Less oxygen is reaching their blood", "Their eyesight changes"], correct: 1, explain: "If oxygen can't cross into the blood efficiently, the body doesn't get enough oxygen — leading to shortness of breath." }
+  { time: 130, prompt: "Why does someone with damaged alveoli often feel short of breath?", options: ["Their bones are weaker", "Less oxygen is reaching their blood", "Their eyesight changes"], correct: 1, explain: "If oxygen can't cross into the blood efficiently, the body doesn't get enough oxygen — leading to shortness of breath." }
 ];
 
 let videoState = { player: null, apiReady: false, doneCheckpoints: new Set(), pollTimer: null, quizContainerBuilt: false };
