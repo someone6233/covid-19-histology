@@ -1,9 +1,5 @@
-# Histology Investigator: Case File — COVID-19
+# Histology 
 
-An interactive, ~15–20 minute web experience for Grade 7/8 students that
-teaches how SARS-CoV-2 affects lung cells and tissue, built around the
-Pennsylvania Science & Technology expectations for cell organelles and
-tissue/organ/system organization.
 
 ## Files (all flat, no subfolders — safe to upload individually to GitHub)
 - `index.html` — the whole app structure (all screens, all diagrams as inline SVG)
@@ -22,17 +18,7 @@ This does mean the page needs an internet connection to load images —
 fine for a GitHub Pages site, but keep that in mind if you ever test it
 fully offline.
 
-## How to publish it on GitHub Pages
-1. Create a new repository on GitHub.
-2. Click **Add file → Upload files**, and drag in `index.html`, `style.css`,
-   and `script.js` (you can select all three at once — no folder needed).
-3. Commit the files.
-4. Go to **Settings → Pages**, set **Branch** to `main` (or your default
-   branch) and folder to `/ (root)`, then save.
-5. GitHub will give you a link like `https://yourusername.github.io/your-repo/`
-   — that's the link to submit.
-
-## Things you (the student) should double-check/customize
+## Things you to should double-check/customize
 - **The video (Step 8):** the code embeds
   `https://www.youtube.com/watch?v=ZL1z3Uju-I0` and auto-pauses it at 40s,
   100s, and 160s to ask a question. Open `script.js`, find
@@ -63,8 +49,3 @@ fully offline.
   correct answer/order before continuing, since those are the two
   "prove you understood it" moments.
 
-## Accessibility & UX notes
-- All clickable diagram markers are keyboard-accessible (Tab + Enter/Space).
-- Reduced-motion is respected for anyone with that OS setting on.
-- The Back button works on every screen, and drag-and-drop steps/pathway
-  chips can always be undone and retried.
