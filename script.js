@@ -294,7 +294,7 @@ function setupVirusScreen() {
   const questions = [
     { prompt: "What part of a cell does the virus's spike protein attach to?", options: ["The nucleus", "ACE2", "The mitochondria", "The cytoplasm"], correct: 1, explain: "The spike protein locks onto an ACE2 receptor on the cell membrane." },
     { prompt: "Can a virus reproduce all by itself?", options: ["Yes", "No"], correct: 1, explain: "Viruses have no cytoplasm, organelles, or way to make their own energy, so they can't reproduce without taking over a host cell." },
-    { prompt: "Which cells does SARS-CoV-2 target first?", options: ["Cells lining the airway and lungs", "Bone cells", "Hair cells", "Nail cells"], correct: 0, explain: "Airway and lung cells carry lots of ACE2 receptors, which is why this virus causes a respiratory illness." },
+    { prompt: "Which area does SARS-CoV-2 target first?", options: ["Lungs", "Bones", "Hair", "Nails"], correct: 0, explain: "Airway and lung cells carry lots of ACE2 receptors, which is why this virus causes a respiratory illness." },
     { prompt: "A virus is generally much ______ than the cell it infects.", options: ["bigger", "smaller", "the same size"], correct: 1, explain: "Viruses are far smaller than the cells they infect, usually around 20 to 200 nanometers" }
   ];
   renderQuiz(document.getElementById("virus-quiz"), questions, "virus", () => {
@@ -334,12 +334,12 @@ function setupTissueScreen() {
 ---------------------------------------------------------------- */
 function setupLungScreen() {
   const spots = [
-    { id: "hs-trachea", title: "1. Trachea (windpipe)", text: "The main tube that carries air down from your throat toward the lungs." },
-    { id: "hs-bronchi", title: "2. Bronchi", text: "The trachea splits into two bronchi, one heading into each lung, then branches again and again like an upside-down tree." },
-    { id: "hs-lobe", title: "3. Lung lobe", text: "A section of the lung (an organ) made up of airway, blood vessels, and millions of alveoli, all working together." },
-    { id: "hs-alveoli", title: "4. Alveoli cluster", text: "Grape-like clusters of tiny air sacs at the very end of the airway — this is where oxygen actually enters the blood." },
-    { id: "hs-capillary", title: "5. Capillaries", text: "Very thin blood vessels wrapped around each alveolus. Oxygen crosses from the air sac into the blood here, and carbon dioxide crosses the other way." },
-    { id: "hs-diaphragm", title: "6. Diaphragm", text: "A dome-shaped muscle below the lungs that contracts and relaxes to pull air in and push air out." }
+    { id: "hs-trachea", title: "1. Trachea (windpipe)", text: "The main tube that moves air from your throat when you breathe in toward the lungs." },
+    { id: "hs-bronchi", title: "2. Bronchi", text: "The trachea splits into two bronchi, one going into each lung (because remember, there are 2 lungs on each side). It then branches again and again." },
+    { id: "hs-lobe", title: "3. Lung lobe", text: "One of the two sections of the lung. It's made up of the airway, blood vessels, and millions of alveoli that all try to maintain one common function." },
+    { id: "hs-alveoli", title: "4. Alveoli cluster", text: "Grape-like clusters of tiny air sacs at the very end of the airway. This iswhere oxygen actually enters into the blood." },
+    { id: "hs-capillary", title: "5. Capillaries", text: "Very thin blood vessels wrapped around each alveolus. Oxygen crosses from the air sac into the blood here, and carbon dioxide crosses the other way (because CO2 moves out, and O2 moves in)." },
+    { id: "hs-diaphragm", title: "6. Diaphragm", text: "A dome-shaped muscle that's below the lungs that contracts and relaxes to pull air in and push air out (without it, you couldn't breathe)" }
   ];
   wireLabelSpots(spots, document.getElementById("lung-note"), document.getElementById("lung-next"));
 }
@@ -406,7 +406,7 @@ function setupSlideScreen() {
 ---------------------------------------------------------------- */
 function setupExamineScreen() {
   const spots = [
-    { id: "hs-a", title: "A. Alveolar space (air space)", text: "The open space in the middle of the air sac where air sits before oxygen crosses into the blood." },
+    { id: "hs-a", title: "A. Alveolar space", text: "The open space in the middle of the air sac where air sits before oxygen crosses into the blood." },
     { id: "hs-b", title: "B. Type I pneumocyte", text: "A very thin, flat cell that makes up most of the alveolus wall. It's thin on purpose — so oxygen can cross through it easily." },
     { id: "hs-c", title: "C. Type II pneumocyte", text: "A rounder, chunkier cell that makes a soapy liquid called surfactant, which keeps the air sac from collapsing like a sticky balloon." },
     { id: "hs-d", title: "Capillary with red blood cells", text: "A tiny blood vessel running right next to the air sac. Red blood cells pick up the oxygen that just crossed over here." }
