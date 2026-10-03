@@ -334,10 +334,10 @@ function setupTissueScreen() {
 ---------------------------------------------------------------- */
 function setupLungScreen() {
   const spots = [
-    { id: "hs-trachea", title: "1. Trachea (windpipe)", text: "The main tube that moves air from your throat when you breathe in toward the lungs." },
+    { id: "hs-trachea", title: "1. Trachea", text: "The tube that brings air down your throat when you breathe in toward the lungs." },
     { id: "hs-bronchi", title: "2. Bronchi", text: "The trachea splits into two bronchi, one going into each lung (because remember, there are 2 lungs on each side). It then branches again and again." },
-    { id: "hs-lobe", title: "3. Lung lobe", text: "One of the two sections of the lung. It's made up of the airway, blood vessels, and millions of alveoli that all try to maintain one common function." },
-    { id: "hs-alveoli", title: "4. Alveoli cluster", text: "Grape-like clusters of tiny air sacs at the very end of the airway. This iswhere oxygen actually enters into the blood." },
+    { id: "hs-lobe", title: "3. Lung lobe", text: "One of the two sections of the lung. It's made up of the airway, blood vessels, and millions of alveoli that all try to maintain one common function (see, it was important!)." },
+    { id: "hs-alveoli", title: "4. Alveoli (pl. Alveolus)", text: "Clusters of tiny air sacs at the very end of the airway where oxygen actually enters into the blood." },
     { id: "hs-capillary", title: "5. Capillaries", text: "Very thin blood vessels wrapped around each alveolus. Oxygen crosses from the air sac into the blood here, and carbon dioxide crosses the other way (because CO2 moves out, and O2 moves in)." },
     { id: "hs-diaphragm", title: "6. Diaphragm", text: "A dome-shaped muscle that's below the lungs that contracts and relaxes to pull air in and push air out (without it, you couldn't breathe)" }
   ];
