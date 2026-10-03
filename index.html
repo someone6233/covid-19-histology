@@ -198,6 +198,248 @@
       </div>
     </div>
   </section>
+
+<!-- =====================================================
+       idk ok i thought this would be important
+  ====================================================== -->
+  <section class="screen" id="screen-vocab">
+    <div class="stage-card">
+      <span class="eyebrow-tag">Step 5b &middot; New Words!</span>
+      <h2>Just Some Terms You Might Need</h2>
+      <p>On the next page you'll put a organize a histological technique, but, before we do that, we have to learn the words first (duh!). Click each term (there are 5) below and you'll see a diagram and some extra information (plz I thought it was cool). <strong>NOTE:</strong> they're <em>not</em> shown in the correct order. Figuring that out is what you'll do next (I'm evil).</p>
+
+      <div class="spot-chip-row" id="vocab-chips" role="tablist" aria-label="Lab vocabulary terms">
+        <button class="spot-chip" id="vc-stain" type="button" role="tab" data-panel="vp-stain">🎨&nbsp; Stain</button>
+        <button class="spot-chip" id="vc-section" type="button" role="tab" data-panel="vp-section">🔪&nbsp; Section</button>
+        <button class="spot-chip" id="vc-fix" type="button" role="tab" data-panel="vp-fix">🧪&nbsp; Fixation</button>
+        <button class="spot-chip" id="vc-mount" type="button" role="tab" data-panel="vp-mount">🔬&nbsp; Mount</button>
+        <button class="spot-chip" id="vc-biopsy" type="button" role="tab" data-panel="vp-biopsy">🩺&nbsp; Biopsy</button>
+      </div>
+      <p class="vocab-progress" id="vocab-progress" aria-live="polite">Terms explored: 0 / 5</p>
+
+      <!-- Prompt shown before any term is picked -->
+      <div class="hotspot-note" id="vocab-placeholder">Pick one to start!</div>
+
+      <!-- ---------- STAIN ---------- -->
+      <div class="vocab-panel" id="vp-stain" role="tabpanel">
+        <div class="vocab-visual-col">
+          <div class="vocab-visual" id="vv-stain">
+            <svg viewBox="0 0 360 210" role="img" aria-label="Diagram of tissue cells that are almost colorless until a stain is added, which turns the nuclei purple and the rest of each cell pink">
+              <rect width="360" height="210" fill="#f7faf8"/>
+              <!-- legend (appears when stained) -->
+              <g class="vv-fade-in">
+                <rect x="10" y="14" width="10" height="10" fill="#5b3f8c"/>
+                <text x="26" y="23" font-size="11" fill="#17222b">Hematoxylin &rarr; nuclei</text>
+                <rect x="10" y="32" width="10" height="10" fill="#f2b4c6" stroke="#d98aa3"/>
+                <text x="26" y="41" font-size="11" fill="#17222b">Eosin &rarr; the rest (aka cytoplasm)</text>
+              </g>
+              <!-- dropper -->
+              <g>
+                <rect x="288" y="6" width="24" height="10" rx="4" fill="#47555c"/>
+                <rect x="292" y="14" width="16" height="30" rx="3" fill="#cfe6ee" stroke="#47555c"/>
+                <path d="M294 44 h12 l-6 14 z" fill="#cfe6ee" stroke="#47555c"/>
+              </g>
+              <circle class="st-drop" cx="300" cy="62" r="5"/>
+              <!-- cells -->
+              <g>
+                <circle class="st-cell" cx="80" cy="130" r="28"/><circle class="st-nuc" cx="84" cy="128" r="10"/>
+                <circle class="st-cell" cx="140" cy="115" r="28"/><circle class="st-nuc" cx="136" cy="118" r="10"/>
+                <circle class="st-cell" cx="200" cy="130" r="28"/><circle class="st-nuc" cx="203" cy="133" r="10"/>
+                <circle class="st-cell" cx="260" cy="115" r="28"/><circle class="st-nuc" cx="256" cy="112" r="10"/>
+                <circle class="st-cell" cx="110" cy="175" r="28"/><circle class="st-nuc" cx="113" cy="172" r="10"/>
+                <circle class="st-cell" cx="175" cy="170" r="28"/><circle class="st-nuc" cx="172" cy="173" r="10"/>
+                <circle class="st-cell" cx="240" cy="170" r="28"/><circle class="st-nuc" cx="243" cy="167" r="10"/>
+                <circle class="st-cell" cx="300" cy="160" r="28"/><circle class="st-nuc" cx="297" cy="162" r="10"/>
+              </g>
+            </svg>
+          </div>
+          <button class="btn btn-primary btn-small vocab-toggle" type="button" data-target="vv-stain" data-label-off="🎨 Add the stain" data-label-on="↩ Remove the stain">🎨 Add the stain</button>
+        </div>
+        <div class="vocab-text">
+          <h3>Stain</h3>
+          <p class="vocab-def">A <strong>stain</strong> is a something that goes into tissue makes certain parts pretty and shiny so we can see them (I like shiny stuff). We need these because a slice of tissue is basically see through, so without stain you can't see anything.</p>
+          <p class="vocab-clue"><strong>Hint:</strong> Histologists like to use multiple stains together. Most commonly, these are called <strong>H&amp;E</strong>. <em>Hematoxylin</em> turns the nucleus purple/blue. <em>Eosin</em> turns the rest of the cell pink (pretty).</p>
+          <p class="vocab-analogy"><strong>If you need more help:</strong> they're kind of like highlighters to make something stand out more.</p>
+          <p class="vocab-case"><strong>For us specifically:</strong> the purple dots and pink areas are what I want to show you on the lung slides later (wink, wink).</p>
+        </div>
+      </div>
+
+      <!-- ---------- SECTION ---------- -->
+      <div class="vocab-panel" id="vp-section" role="tabpanel">
+        <div class="vocab-visual-col">
+          <div class="vocab-visual" id="vv-section">
+            <svg viewBox="0 0 360 160" role="img" aria-label="Diagram of a block of wax with tissue inside being cut by a microtome blade into a thin ribbon of sections">
+              <rect width="360" height="160" fill="#f7faf8"/>
+              <rect x="30" y="78" width="110" height="56" rx="4" fill="#f4ebd0" stroke="#c9b98a" stroke-width="2"/>
+              <ellipse cx="85" cy="106" rx="32" ry="20" fill="#e9a3b8" opacity=".9"/>
+              <text x="85" y="150" text-anchor="middle" font-size="11" fill="#17222b">Wax block + tissue</text>
+              <g class="sc-blade">
+                <polygon points="70,50 190,62 190,68 70,58" fill="#aab6bb" stroke="#5c6a70" stroke-width="1.5"/>
+                <rect x="186" y="56" width="50" height="16" rx="4" fill="#47555c"/>
+              </g>
+              <text x="196" y="46" font-size="11" fill="#17222b">Microtome blade</text>
+              <path d="M140 84 C165 72,180 96,205 84 S245 74,268 88" fill="none" stroke="#e9a3b8" stroke-width="5" stroke-linecap="round"/>
+              <text x="150" y="118" font-size="11" fill="#17222b">Ribbon of thin sections</text>
+            </svg>
+          </div>
+          <!-- Interactive light test -->
+          <div class="vocab-lab">
+            <p class="vocab-lab-title">🔦 Light test: how thin does a slice need to be?</p>
+            <svg viewBox="0 0 360 122" role="img" aria-label="Light shining down through a tissue slice; the thicker the slice, the less light gets through to the microscope view">
+              <rect width="360" height="122" fill="#f7faf8"/>
+              <text x="14" y="30" font-size="24">💡</text>
+              <g id="light-rays" stroke="#e2a53c" stroke-width="3" stroke-linecap="round">
+                <line x1="90" y1="36" x2="90" y2="92"/><line x1="135" y1="36" x2="135" y2="92"/><line x1="180" y1="36" x2="180" y2="92"/><line x1="225" y1="36" x2="225" y2="92"/><line x1="270" y1="36" x2="270" y2="92"/>
+              </g>
+              <rect id="slice-rect" x="70" y="50" width="220" height="34" rx="3" fill="#e9a3b8" stroke="#d98aa3"/>
+              <g id="light-view">
+                <rect x="70" y="94" width="220" height="22" rx="3" fill="#fff8dc" stroke="#e6d9a8"/>
+                <circle cx="110" cy="105" r="6" fill="#5b3f8c"/><circle cx="160" cy="105" r="6" fill="#5b3f8c"/><circle cx="210" cy="105" r="6" fill="#5b3f8c"/><circle cx="255" cy="105" r="6" fill="#5b3f8c"/>
+              </g>
+            </svg>
+            <label class="vocab-slider-label" for="slice-slider">Slice thickness: <strong><span id="slice-val">100</span> &micro;m</strong></label>
+            <input type="range" id="slice-slider" min="5" max="100" step="5" value="100">
+            <div class="feedback bad" id="slice-msg">That's too thick (so sad). Light can't get through, so the view is a dark blur. Why don't you try sliding the thickness down?</div>
+          </div>
+        </div>
+        <div class="vocab-text">
+          <h3>Section</h3>
+          <p class="vocab-def">A <strong>section</strong> is an very, very thin slice of tissue. It's usually only about <strong>4&ndash;5 micrometers (&micro;m)</strong> thick. The tool that cuts it is called a <strong>microtome</strong>. To do this, the tissue is held in a block of wax so it doesn't deform while it's cut.</p>
+          <p class="vocab-clue"><strong>Another hint (I'm so generous):</strong> <em>micro</em> = tiny and <em>-tome</em> = cutter. Therefore, a microtome is a "tiny cutter."</p>
+          <p class="vocab-analogy"><strong>Think of it like:</strong> a deli slicer shaving a block of cheese into slices so thin you can almost see through them. A human hair is about 70 &micro;m wide, so a section is more than 10 times thinner than one hair!</p>
+          <p class="vocab-case"><strong>For us:</strong> we need light to pass through the lung tissue so we can see the cells and alveoli walls.</p>
+        </div>
+      </div>
+
+      <!-- ---------- FIXATION ---------- -->
+      <div class="vocab-panel" id="vp-fix" role="tabpanel">
+        <div class="vocab-visual-col">
+          <div class="vocab-visual" id="vv-fix">
+            <svg viewBox="0 0 360 200" role="img" aria-label="A jar holding tissue, and a cell that falls apart without fixative but stays locked in place with fixative">
+              <rect width="360" height="200" fill="#f7faf8"/>
+              <!-- jar -->
+              <rect x="26" y="48" width="108" height="16" rx="4" fill="#47555c"/>
+              <rect x="30" y="62" width="100" height="116" rx="12" fill="#eaf4f2" stroke="#47555c" stroke-width="2"/>
+              <rect class="fx-liquid" x="34" y="100" width="92" height="74" rx="8"/>
+              <ellipse cx="80" cy="140" rx="24" ry="16" fill="#e9a3b8" stroke="#d98aa3"/>
+              <text class="fx-label-off" x="80" y="195" text-anchor="middle" font-size="11" fill="#17222b">Plain water (no fixative)</text>
+              <text class="fx-label-on" x="80" y="195" text-anchor="middle" font-size="11" fill="#17222b">Formalin (a fixative)</text>
+              <!-- cell -->
+              <g class="fx-cell-wrap">
+                <circle class="fx-cell" cx="255" cy="120" r="42"/>
+                <circle class="fx-nuc" cx="255" cy="120" r="14"/>
+              </g>
+              <!-- decay dots -->
+              <g class="fx-decay" fill="#e2634b">
+                <circle cx="205" cy="85" r="4"/><circle cx="310" cy="90" r="4"/><circle cx="318" cy="150" r="4"/><circle cx="200" cy="155" r="4"/><circle cx="260" cy="176" r="4"/><circle cx="240" cy="68" r="4"/>
+              </g>
+              <text class="fx-lock" x="255" y="127" text-anchor="middle" font-size="22">🔒</text>
+              <!-- state captions -->
+              <text class="fx-label-off" x="255" y="22" text-anchor="middle" font-size="11" fill="#b8412c">Without fixative: enzymes and</text>
+              <text class="fx-label-off" x="255" y="36" text-anchor="middle" font-size="11" fill="#b8412c">microbes destroy the cell</text>
+              <text class="fx-label-on" x="255" y="22" text-anchor="middle" font-size="11" fill="#2f7a45">With fixative: the cell is</text>
+              <text class="fx-label-on" x="255" y="36" text-anchor="middle" font-size="11" fill="#2f7a45">constrained and preserved</text>
+            </svg>
+          </div>
+          <button class="btn btn-primary btn-small vocab-toggle" type="button" data-target="vv-fix" data-label-off="🧪 Add the fixative" data-label-on="↩ Take the fixative away">🧪 Add the fixative</button>
+        </div>
+        <div class="vocab-text">
+          <h3>Fixation</h3>
+          <p class="vocab-def"><strong>Fixation</strong> means preserving tissue with a chemical called a <strong>fixative</strong>, most often <strong>formalin</strong> (you don't need to memorize this). Once the tissue is taken out of the body, its own enzymes and microbes start breaking it down, so the fixative stops that and keeps the cells in place.</p>
+          <p class="vocab-clue"><strong>Yay, another hint:</strong> to <em>fix</em> something here means to hold it firmly in place (I'm sure you know this)</p>
+          <p class="vocab-analogy"><strong>For more context:</strong> you could think of it like pressing a flower in a book so it keeps its shape.</p>
+          <p class="vocab-case"><strong>For us specifically:</strong> fixing keeps the lung cells looking just like they did in the patient, which is obviously important.</p>
+        </div>
+      </div>
+
+      <!-- ---------- MOUNT ---------- -->
+      <div class="vocab-panel" id="vp-mount" role="tabpanel">
+        <div class="vocab-visual-col">
+          <div class="vocab-visual" id="vv-mount">
+            <svg viewBox="0 0 360 200" role="img" aria-label="Side view of a glass slide with a thin tissue section on it and a thin cover slip that lowers on top">
+              <rect width="360" height="200" fill="#f7faf8"/>
+              <!-- slide -->
+              <rect x="40" y="148" width="280" height="16" rx="2" fill="#cfe6ee" stroke="#6f9aa8" stroke-width="1.5"/>
+              <!-- glue -->
+              <rect class="mt-glue" x="104" y="142" width="152" height="6"/>
+              <!-- tissue section -->
+              <rect x="130" y="142" width="100" height="6" fill="#e9a3b8" stroke="#d98aa3"/>
+              <!-- cover slip (moves) -->
+              <g class="mt-cover">
+                <rect x="100" y="134" width="160" height="6" rx="1" fill="#e3f1f6" fill-opacity=".85" stroke="#6f9aa8" stroke-width="1.5"/>
+                <text x="180" y="126" text-anchor="middle" font-size="11" fill="#17222b">Cover slip</text>
+              </g>
+              <!-- legend -->
+              <g font-size="10.5" fill="#17222b">
+                <rect x="20" y="178" width="10" height="10" fill="#cfe6ee" stroke="#6f9aa8"/><text x="34" y="187">Glass slide</text>
+                <rect x="108" y="178" width="10" height="10" fill="#e9a3b8" stroke="#d98aa3"/><text x="122" y="187">Tissue</text>
+                <rect x="170" y="178" width="10" height="10" fill="#f3d98c"/><text x="184" y="187">Glue</text>
+                <rect x="224" y="178" width="10" height="10" fill="#e3f1f6" stroke="#6f9aa8"/><text x="238" y="187">Cover slip</text>
+              </g>
+            </svg>
+          </div>
+          <button class="btn btn-primary btn-small vocab-toggle" type="button" data-target="vv-mount" data-label-off="🔬 Add the cover slip" data-label-on="↩ Lift the cover slip">🔬 Add the cover slip</button>
+        </div>
+        <div class="vocab-text">
+          <h3>Mount</h3>
+          <p class="vocab-def">To <strong>mount</strong> a section means to attach it to a <strong>glass slide</strong>. A drop of clear glue goes on, then a tiny, thin piece of glass called a <strong>cover slip</strong> is laid on top.</p>
+          <p class="vocab-clue"><strong>More hints:</strong> think of <em>mounting</em> something on a bullitin board. You're trying to attach something so it stays put and can be displayed.</p>
+          <p class="vocab-analogy"><strong>For more context:</strong> it could also be like laminating a photo. It stays flat and it is protected from scratches.</p>
+          <p class="vocab-case"><strong>For us specifically:</strong> the cover slip keeps the lung section flat so the microscope can focus on it (yay vision).</p>
+        </div>
+      </div>
+
+      <!-- ---------- BIOPSY ---------- -->
+      <div class="vocab-panel" id="vp-biopsy" role="tabpanel">
+        <div class="vocab-visual-col">
+          <div class="vocab-visual" id="vv-biopsy">
+            <svg viewBox="0 0 360 200" role="img" aria-label="Diagram of two lungs with a small area marked; a tiny piece of tissue is moved from the lung into a sample dish">
+              <rect width="360" height="200" fill="#f7faf8"/>
+              <rect x="96" y="14" width="8" height="36" rx="3" fill="#cfd5cf" stroke="#9aa59d"/>
+              <path d="M95 40 C 60 40, 30 90, 34 150 C 36 175, 70 182, 88 160 C 100 140, 98 80, 95 40 Z" fill="#f3b6b0" stroke="#c47a73" stroke-width="2"/>
+              <path d="M105 40 C 140 40, 170 90, 166 150 C 164 175, 130 182, 112 160 C 100 140, 102 80, 105 40 Z" fill="#f3b6b0" stroke="#c47a73" stroke-width="2"/>
+              <text x="100" y="195" text-anchor="middle" font-size="11" fill="#17222b">Patient's lungs</text>
+              <!-- target -->
+              <circle cx="60" cy="110" r="13" fill="none" stroke="#b8412c" stroke-width="2" stroke-dasharray="4 3"/>
+              <!-- dish -->
+              <ellipse cx="270" cy="158" rx="52" ry="16" fill="#eaf2f0" stroke="#47555c" stroke-width="2"/>
+              <ellipse cx="270" cy="153" rx="52" ry="16" fill="#f7fbfa" stroke="#47555c" stroke-width="2"/>
+              <text x="270" y="195" text-anchor="middle" font-size="11" fill="#17222b">Sample dish</text>
+              <!-- tissue piece (moves) -->
+              <g class="bp-piece">
+                <circle cx="60" cy="110" r="7" fill="#c9606f" stroke="#8f3a47" stroke-width="1.5"/>
+              </g>
+              <g class="vv-fade-in">
+                <text x="270" y="118" text-anchor="middle" font-size="11" fill="#17222b">Biopsy sample</text>
+                <text x="270" y="131" text-anchor="middle" font-size="10" fill="#47555c">(often only a few mm wide)</text>
+              </g>
+            </svg>
+          </div>
+          <button class="btn btn-primary btn-small vocab-toggle" type="button" data-target="vv-biopsy" data-label-off="🩺 Take the sample" data-label-on="↩ Put it back">🩺 Take the sample</button>
+        </div>
+        <div class="vocab-text">
+          <h3>Biopsy (tissue sample)</h3>
+          <p class="vocab-def">A <strong>biopsy</strong> is when you remove a piece of tissue from a somebody to look at it. The piece we remove is called a <strong>sample</strong> or <strong>specimen</strong>.</p>
+          <p class="vocab-clue"><strong>Hint for the word:</strong> <em>bio</em> = life and <em>-opsy</em> = looking at. Therefore, a biopsy is "looking at living tissue."</p>
+          <p class="vocab-analogy"><strong>For an example:</strong> think of it like tasting a spoonful of soup instead of eating the whole pot (idk I wrote this at 12am).</p>
+          <p class="vocab-case"><strong>In our case:</strong> a small piece of the patient's lung lets us see what's happening inside without examining the entire organ.</p>
+        </div>
+      </div>
+
+      <!-- quiz hehe -->
+      <div class="vocab-quiz-wrap" id="vocab-quiz-wrap" hidden>
+        <h3>⚡ Quick check</h3>
+        <p>You explored every term. Let's make sure you can move on.</p>
+        <div id="vocab-quiz"></div>
+      </div>
+
+      <div class="nav-row">
+        <button class="btn btn-ghost" data-back>Back</button>
+        <span class="spacer"></span>
+        <button class="btn btn-primary" data-next id="vocab-next" disabled>Next: Prepare a Histological Slide</button>
+      </div>
+    </div>
+  </section>
   
 <script src="script.js"></script>
 </body>
