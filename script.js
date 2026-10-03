@@ -407,7 +407,7 @@ function setupVocabScreen() {
       msg.textContent = "Yay, that's the perfect thickness for this. Since it's about 4-5 \u00B5m, we can be certain that plenty of light passes through and we can see every cell.";
     } else if (t <= 40) {
       msg.className = "feedback";
-      msg.textContent = "Slightly better, but I still thinkt that the view is still dim. Try making it thinner.";
+      msg.textContent = "Slightly better, but I still think that the view is still dim. Try making it thinner.";
     } else {
       msg.className = "feedback bad";
       msg.textContent = "Help, that's way too thick. I'm not too sure that light can get through, so the view is very dark. Maybe try the sliding the thickness down?";
