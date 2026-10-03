@@ -308,9 +308,9 @@ function setupVirusScreen() {
 function setupCellScreen() {
   const spots = [
     { id: "hs-membrane", title: "Cell membrane", text: "A thin, flexible boundary that controls what goes in and out of the cell. THINK: How might the virus use this?" },
-    { id: "hs-nucleus", title: "Nucleus", text: "The cell's <q>control centre</q>. It stores DNA and directs what the cell does." },
-    { id: "hs-mito", title: "Mitochondria", text: "Often called the <q>powerhouse of the cell</q>. It turns nutrients into usable energy for the cell to work properly." },
-    { id: "hs-cytoplasm", title: "Cytoplasm", text: "The jelly-like fluid that fills the inside of the cell, where the organelles sit and many chemical reactions happen." }
+    { id: "hs-nucleus", title: "Nucleus", text: "The main controlling area of the cell that stores DNA and directs what the cell does (basically, like a boss)." },
+    { id: "hs-mito", title: "Mitochondria", text: "Often called the powerhouse of the cell (we are embracing the meme). It turns nutrients into usable energy (called ATP) for the cell to work properly." },
+    { id: "hs-cytoplasm", title: "Cytoplasm", text: "The fluid that fills the inside of the cell where the organelles sit and many chemical reactions happen." }
   ];
   wireLabelSpots(spots, document.getElementById("cell-note"), document.getElementById("cell-next"));
 }
