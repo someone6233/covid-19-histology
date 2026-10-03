@@ -68,7 +68,7 @@ const Sound = (() => {
    1. App state & navigation
 ---------------------------------------------------------------- */
 const SCREEN_IDS = [
-  "landing", "briefing", "virus", "cell", "tissue-basics", "lung",
+  "landing", "briefing", "virus", "cell", "tissue-basics", "lung", "vocab",
   "slide", "examine", "compare", "video", "lab", "pathway", "final", "certificate"
 ];
 
@@ -278,6 +278,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCellScreen();
   setupTissueScreen();
   setupLungScreen();
+  setupVocabScreen();
   setupSlideScreen();
   setupExamineScreen();
   setupCompareScreen();
@@ -334,14 +335,103 @@ function setupTissueScreen() {
 ---------------------------------------------------------------- */
 function setupLungScreen() {
   const spots = [
-    { id: "hs-trachea", title: "1. Trachea", text: "The tube that brings air down your throat when you breathe in toward the lungs." },
+    { id: "hs-trachea", title: "1. Trachea", text: "The main tube that moves air from your throat when you breathe in toward the lungs." },
     { id: "hs-bronchi", title: "2. Bronchi", text: "The trachea splits into two bronchi, one going into each lung (because remember, there are 2 lungs on each side). It then branches again and again." },
-    { id: "hs-lobe", title: "3. Lung lobe", text: "One of the two sections of the lung. It's made up of the airway, blood vessels, and millions of alveoli that all try to maintain one common function (see, it was important!)." },
-    { id: "hs-alveoli", title: "4. Alveoli (pl. Alveolus)", text: "Clusters of tiny air sacs at the very end of the airway where oxygen actually enters into the blood." },
+    { id: "hs-lobe", title: "3. Lung lobe", text: "One of the two sections of the lung. It's made up of the airway, blood vessels, and millions of alveoli that all try to maintain one common function." },
+    { id: "hs-alveoli", title: "4. Alveoli cluster", text: "Grape-like clusters of tiny air sacs at the very end of the airway. This iswhere oxygen actually enters into the blood." },
     { id: "hs-capillary", title: "5. Capillaries", text: "Very thin blood vessels wrapped around each alveolus. Oxygen crosses from the air sac into the blood here, and carbon dioxide crosses the other way (because CO2 moves out, and O2 moves in)." },
     { id: "hs-diaphragm", title: "6. Diaphragm", text: "A dome-shaped muscle that's below the lungs that contracts and relaxes to pull air in and push air out (without it, you couldn't breathe)" }
   ];
   wireLabelSpots(spots, document.getElementById("lung-note"), document.getElementById("lung-next"));
+}
+
+/* ---------------------------------------------------------------
+   8b. Lab vocab (defines the words used in "Prepare a slide")
+   - click a term chip -> shows that term's diagram + definition
+   - toggle buttons animate the diagrams (stain, fixative, cover slip, biopsy)
+   - the slider shows why a section must be thin (light has to get through)
+   - once all 5 terms are explored, a quick quiz unlocks; finishing it
+     unlocks the Next button
+---------------------------------------------------------------- */
+function setupVocabScreen() {
+  const chips = Array.from(document.querySelectorAll("#vocab-chips .spot-chip"));
+  const placeholder = document.getElementById("vocab-placeholder");
+  const progressEl = document.getElementById("vocab-progress");
+  const quizWrap = document.getElementById("vocab-quiz-wrap");
+  const nextBtn = document.getElementById("vocab-next");
+  const seen = new Set();
+  let quizBuilt = false;
+
+  function showPanel(chip) {
+    Sound.click();
+    placeholder.style.display = "none";
+    chips.forEach(c => c.setAttribute("aria-selected", String(c === chip)));
+    document.querySelectorAll(".vocab-panel").forEach(p => {
+      p.classList.toggle("active", p.id === chip.dataset.panel);
+    });
+    chip.classList.add("seen");
+    seen.add(chip.id);
+    progressEl.textContent = `Terms explored: ${seen.size} / ${chips.length}`;
+    if (seen.size === chips.length && !quizBuilt) buildQuiz();
+  }
+  chips.forEach(chip => chip.addEventListener("click", () => showPanel(chip)));
+
+  // Toggle buttons that animate a diagram
+  document.querySelectorAll(".vocab-toggle").forEach(btn => {
+    btn.addEventListener("click", () => {
+      Sound.click();
+      const target = document.getElementById(btn.dataset.target);
+      const isOn = target.classList.toggle("on");
+      btn.textContent = isOn ? btn.dataset.labelOn : btn.dataset.labelOff;
+    });
+  });
+
+  // "Light test" slider for the Section term
+  const slider = document.getElementById("slice-slider");
+  const valEl = document.getElementById("slice-val");
+  const slice = document.getElementById("slice-rect");
+  const rays = document.getElementById("light-rays");
+  const view = document.getElementById("light-view");
+  const msg = document.getElementById("slice-msg");
+  function updateSlice() {
+    const t = Number(slider.value);           // micrometers, 5..100
+    valEl.textContent = t;
+    const h = 6 + (t - 5) * 0.29;             // thicker slice = taller rectangle
+    const transmit = Math.max(0.06, 1 - (t - 5) / 70);
+    slice.setAttribute("height", h.toFixed(1));
+    slice.style.opacity = (0.35 + (t / 100) * 0.6).toFixed(2);
+    rays.style.opacity = transmit.toFixed(2);
+    view.style.opacity = transmit.toFixed(2);
+    if (t <= 10) {
+      msg.className = "feedback good";
+      msg.textContent = "Yay, that's the perfect thickness for this. Since it's about 4-5 \u00B5m, we can be certain that plenty of light passes through and we can see every cell.";
+    } else if (t <= 40) {
+      msg.className = "feedback";
+      msg.textContent = "Slightly better, but I still thinkt that the view is still dim. Try making it thinner.";
+    } else {
+      msg.className = "feedback bad";
+      msg.textContent = "Help, that's way too thick. I'm not too sure that light can get through, so the view is very dark. Maybe try the sliding the thickness down?";
+    }
+  }
+  slider.addEventListener("input", updateSlice);
+  updateSlice();
+
+  // Quick check (unlocks after all terms are explored)
+  function buildQuiz() {
+    quizBuilt = true;
+    quizWrap.hidden = false;
+    Sound.correct();
+    const questions = [
+      { prompt: "A doctor removes a small piece of a patient's lung to study it. What is this called?", options: ["A biopsy", "A stain", "A cover slip", "A fixative"], correct: 0, explain: "A biopsy is a tiny piece of tissue removed so it can be studied." },
+      { prompt: "What does a fixative do?", options: ["Colors the nuclei purple", "Cuts the tissue into thin slices", "Preserves the cells", "Glues the tissue to the glass"], correct: 2, explain: "A fixative locks cells in place and stops enzymes and microbes from breaking the tissue down." },
+      { prompt: "Why does a section have to be so thin (about 4-5 \u00B5m)?", options: ["So it costs less to make", "So light can pass through it to see the cells", "So it turns pink", "So it fits in a jar"], correct: 1, explain: "A regular microscope shines light through the tissue. If it's too thick, the light can't get through and we can't see it (sad)." },
+      { prompt: "Hematoxylin and eosin (H&E) are two examples of...", options: ["Fixatives", "Microtomes", "Stains", "Cover slips"], correct: 2, explain: "H&E are stains. Hematoxylin colors nuclei purple-blue and eosin colors the rest of the cell (cyotoplasm) pink." },
+      { prompt: "What is the job of a cover slip?", options: ["To protect the section and keep it flat", "To cut the tissue", "To add color to the cells", "To preserve the tissue with chemicals"], correct: 0, explain: "The cover slip protects the delicate section and keeps it flat so the microscope can focus." }
+    ];
+    renderQuiz(document.getElementById("vocab-quiz"), questions, "vocab", () => {
+      nextBtn.disabled = false;
+    });
+  }
 }
 
 /* ---------------------------------------------------------------
