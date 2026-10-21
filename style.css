@@ -1,0 +1,847 @@
+/* ================================================================
+   UNDER THE MICROSCOPE: stylesheet
+
+   CONTENTS
+   1. Colors and fonts        change the look of the whole site here
+   2. Page basics
+   3. Page layout             sidebar, main area, player bar
+   4. Side library
+   5. Album page              hero, track list, "You might also enjoy"
+   6. Player bar
+   7. Track page frame        title, cards, "next track" bar
+   8. Shared pieces           buttons, chips, pills, meters
+   9. Diagram styles          labels and clickable spots in the drawings
+  10. Track extras           ordering challenge, game, quiz
+  11. Reduced motion
+   ================================================================ */
+
+/* ================================================================
+   1. COLORS AND FONTS
+   Change a value here and it updates everywhere.
+   ================================================================ */
+:root {
+  /* surfaces */
+  --bg: #0E0D16;       /* page background */
+  --panel: #171525;    /* big panels */
+  --panel2: #221F36;   /* cards and hover rows */
+  --line: #2F2B49;     /* borders */
+  --hero: #4A1B3A;     /* top of the album header */
+  /* text */
+  --fg: #F3F0FA;       /* main text */
+  --muted: #A9A4C4;    /* smaller, quieter text */
+  /* accents */
+  --virus: #FF5D7A;    /* pink-red: virus, warnings */
+  --cell: #3CDDC6;     /* teal: cells, success, buttons */
+  --gold: #FFD166;     /* gold: highlights, clues */
+  --violet: #8B7BFF;
+  /* fonts (no downloads needed, so school filters cannot block them) */
+  --display: ui-rounded, "SF Pro Rounded", "Arial Rounded MT Bold", "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  --body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: dark;
+}
+
+/* ================================================================
+   2. PAGE BASICS
+   ================================================================ */
+[hidden] {
+  display:none!important;
+}
+html,body {
+  height:100%;
+}
+* {
+  box-sizing:border-box;
+}
+body {
+  background:var(--bg);
+  color:var(--fg);
+  font:16px/1.5 var(--body);
+  padding-block:12px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+h1,h2,h3,p {
+  margin:0;
+}
+button {
+  font:inherit;
+  color:inherit;
+  cursor:pointer;
+  background:none;
+  border:0;
+  padding:0;
+}
+:focus-visible {
+  outline:3px solid var(--gold);
+  outline-offset:2px;
+  border-radius:6px;
+}
+
+/* ================================================================
+   3. PAGE LAYOUT
+   Sidebar on the left, main area in the middle, player bar along the bottom.
+   On phones the sidebar hides.
+   ================================================================ */
+.app {
+  height:100%;
+  display:grid;
+  grid-template-columns:280px minmax(0,1fr);
+  grid-template-rows:minmax(0,1fr) auto;
+  gap:8px;
+}
+.side,.main,.player {
+  background:var(--panel);
+  border-radius:14px;
+}
+.side {
+  padding:16px;
+  overflow:auto;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-height:0;
+}
+.main {
+  overflow:auto;
+  min-height:0;
+  min-width:0;
+}
+.player {
+  grid-column:1/-1;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1.5fr) minmax(0,1fr);
+  align-items:center;
+  gap:16px;
+  padding:10px 16px;
+}
+@media(max-width:860px){.app{grid-template-columns:minmax(0,1fr)}.side{display:none}.player{grid-template-columns:minmax(0,1fr) auto;gap:10px}.player .rt{display:none}.player .bar{display:none}}
+
+/* ================================================================
+   4. SIDE LIBRARY
+   ================================================================ */
+.cov {
+  display:block;
+  border-radius:8px;
+  flex:none;
+}
+.brand {
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding-bottom:6px;
+}
+.brand b,.libitem b {
+  display:block;
+  font-weight:700;
+  line-height:1.2;
+}
+.brand span,.libitem i {
+  display:block;
+  color:var(--muted);
+  font-size:13px;
+  font-style:normal;
+}
+.slab {
+  font:700 12px var(--body);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:10px;
+}
+.libitem {
+  display:flex;
+  gap:10px;
+  align-items:center;
+  text-align:left;
+  width:100%;
+  padding:8px;
+  border-radius:10px;
+}
+.libitem:hover,.libitem.on {
+  background:var(--panel2);
+}
+.libitem .n {
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--bg);
+  font-size:13px;
+  font-weight:700;
+  flex:none;
+}
+.libitem .n svg {
+  color:var(--cell);
+}
+
+/* ================================================================
+   5. ALBUM PAGE
+   Hero header, play button, track list, and the recommended albums.
+   ================================================================ */
+.eyebrow {
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.hero {
+  display:flex;
+  gap:24px;
+  align-items:flex-end;
+  padding:28px;
+  background:linear-gradient(180deg,var(--hero),var(--panel));
+}
+.hero .cov {
+  width:min(220px,40vw);
+  height:auto;
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
+}
+.htxt {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-width:0;
+}
+.big {
+  font:800 clamp(34px,6vw,64px)/1 var(--display);
+  letter-spacing:-.02em;
+  text-wrap:balance;
+}
+.meta {
+  color:var(--muted);
+}
+.lede {
+  max-width:62ch;
+}
+@media(max-width:640px){.hero{flex-direction:column;align-items:flex-start;padding:20px}}
+.body {
+  padding:8px 28px 32px;
+}
+@media(max-width:640px){.body{padding:8px 16px 28px}}
+.actions {
+  display:flex;
+  align-items:center;
+  gap:16px;
+  padding:12px 0 18px;
+}
+.playbig {
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  background:var(--cell);
+  color:#06221e;
+  display:grid;
+  place-items:center;
+}
+.playbig:hover {
+  transform:scale(1.06);
+}
+.prog-txt {
+  color:var(--muted);
+}
+.thr,.row {
+  display:grid;
+  grid-template-columns:36px minmax(0,1fr) minmax(0,190px) 52px 28px;
+  gap:12px;
+  align-items:center;
+  padding:10px 12px;
+}
+.thr {
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  border-bottom:1px solid var(--line);
+}
+.row {
+  width:100%;
+  text-align:left;
+  border-radius:10px;
+}
+.row:hover {
+  background:var(--panel2);
+}
+.row .num,.row .tm {
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+.row .num {
+  text-align:center;
+}
+.row .tt b {
+  display:block;
+  font-size:17px;
+}
+.row .tt span,.tag {
+  color:var(--muted);
+  font-size:14px;
+}
+.row .ck {
+  color:var(--cell);
+}
+@media(max-width:640px){.thr,.row{grid-template-columns:28px minmax(0,1fr) 44px 24px;gap:8px}.tg,.row .tag{display:none}}
+.done-card {
+  margin-bottom:16px;
+  padding:16px;
+  border-radius:14px;
+  background:var(--panel2);
+  border:2px solid var(--gold);
+}
+
+/* "You might also enjoy" albums */
+.rec {
+  margin-top:28px;
+}
+.rec h2 {
+  font:800 22px var(--display);
+}
+.recgrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+@media(max-width:640px){.recgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rcard {
+  background:var(--panel2);
+  border-radius:12px;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-width:0;
+}
+.rcard b {
+  display:block;
+  line-height:1.25;
+}
+.rcard span {
+  color:var(--muted);
+  font-size:14px;
+}
+.rcover {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg);
+}
+.rcover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Shown only when the image file is missing */
+.rcover .ph {
+  display: none;
+  position: absolute;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px;
+  text-align: center;
+  border: 2px dashed var(--line);
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  word-break: break-all;
+}
+.rcover .ph strong { color: var(--fg); font-size: 13px; }
+.rcover.noimg .ph { display: flex; }
+.rcover.noimg img { display: none; }
+
+/* ================================================================
+   6. PLAYER BAR
+   ================================================================ */
+.player .np {
+  display:flex;
+  gap:10px;
+  align-items:center;
+  min-width:0;
+}
+.player .np div {
+  min-width:0;
+}
+.player .np b,.player .np span {
+  display:block;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.player .np span {
+  color:var(--muted);
+  font-size:13px;
+}
+.ctl {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+.btns {
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.ic {
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  color:var(--muted);
+}
+.ic:hover {
+  color:var(--fg);
+}
+.pl {
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:var(--fg);
+  color:#1a1726;
+  display:grid;
+  place-items:center;
+}
+.ctl .bar {
+  width:100%;
+  max-width:460px;
+}
+.rt {
+  display:flex;
+  gap:12px;
+  justify-content:flex-end;
+  align-items:center;
+  color:var(--muted);
+  font-size:13px;
+}
+.link {
+  color:var(--muted);
+  text-decoration:underline;
+}
+
+/* ================================================================
+   7. TRACK PAGE FRAME
+   Back button, big track number, two-column layout, cards, and the next-track bar.
+   ================================================================ */
+.topbar {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 20px 0;
+}
+.chev {
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:var(--bg);
+  display:grid;
+  place-items:center;
+}
+.thead {
+  display:flex;
+  gap:18px;
+  align-items:center;
+  padding:14px 28px 8px;
+}
+.tnum {
+  font:800 clamp(48px,9vw,88px)/1 var(--display);
+  color:var(--virus);
+}
+.thead h1 {
+  font:800 clamp(28px,5vw,44px)/1.05 var(--display);
+  text-wrap:balance;
+}
+.thead .lede {
+  color:var(--muted);
+  margin-top:4px;
+}
+.stage {
+  padding:12px 28px 8px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+@media(max-width:640px){.stage,.thead{padding-left:16px;padding-right:16px}.topbar{padding-left:12px}}
+.two {
+  display:grid;
+  grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
+  gap:16px;
+  align-items:start;
+}
+.two.wide {
+  grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);
+}
+@media(max-width:860px){.two,.two.wide{grid-template-columns:minmax(0,1fr)}}
+.card {
+  background:var(--panel2);
+  border-radius:14px;
+  padding:16px;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.card h3 {
+  font:700 19px var(--display);
+}
+.art {
+  padding:8px;
+}
+.art svg {
+  display:block;
+  width:100%;
+  height:auto;
+}
+.nextbar {
+  margin:8px 28px 0;
+  padding:14px 16px;
+  border-radius:14px;
+  background:var(--bg);
+  border:2px solid var(--cell);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+@media(max-width:640px){.nextbar{margin-left:16px;margin-right:16px}}
+
+/* ================================================================
+   8. SHARED PIECES
+   Buttons, chips, pills, switches, feedback text, meters, legends.
+   ================================================================ */
+.btn {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  border-radius:999px;
+  padding:10px 18px;
+  font-weight:700;
+  background:var(--fg);
+  color:#1a1726;
+}
+.btn.pri {
+  background:var(--cell);
+  color:#06221e;
+}
+.btn.ghost {
+  background:transparent;
+  border:2px solid var(--line);
+  color:var(--fg);
+}
+.btn[disabled] {
+  opacity:.45;
+  cursor:not-allowed;
+}
+.btnrow {
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.chip {
+  display:inline-block;
+  align-self:flex-start;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  padding:3px 10px;
+  border-radius:999px;
+}
+.chip.job {
+  background:rgba(60,221,198,.16);
+  color:var(--cell);
+}
+.chip.tw {
+  background:rgba(255,93,122,.16);
+  color:var(--virus);
+}
+.chip.sy {
+  background:rgba(255,209,102,.16);
+  color:var(--gold);
+}
+.pills {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.pill {
+  font-size:13px;
+  font-weight:700;
+  padding:4px 10px;
+  border-radius:999px;
+  background:var(--bg);
+  color:var(--muted);
+}
+.pill.on {
+  background:var(--cell);
+  color:#06221e;
+}
+.seg {
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.segb {
+  padding:8px 14px;
+  border-radius:999px;
+  background:var(--bg);
+  font-weight:700;
+}
+.segb.on {
+  background:var(--fg);
+  color:#1a1726;
+}
+input[type=range] {
+  width:100%;
+  accent-color:var(--cell);
+}
+.rl {
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+  font-size:13px;
+}
+.fb {
+  min-height:1.5em;
+  font-weight:700;
+}
+.fb.good {
+  color:var(--cell);
+}
+.fb.bad {
+  color:var(--virus);
+}
+.meter {
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.mbar,.bar {
+  height:10px;
+  border-radius:999px;
+  background:var(--bg);
+  overflow:hidden;
+}
+.mbar span {
+  display:block;
+  height:100%;
+  background:var(--gold);
+  transition:width .4s;
+}
+.bar span {
+  display:block;
+  height:100%;
+  background:var(--cell);
+  transition:width .4s;
+}
+.legend {
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  color:var(--muted);
+  font-size:14px;
+}
+.legend i {
+  display:inline-block;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  margin-right:6px;
+  vertical-align:-1px;
+}
+
+/* ================================================================
+   9. DIAGRAM STYLES
+   Text and clickable spots inside the SVG drawings.
+   ================================================================ */
+svg text {
+  font-family:var(--body);
+}
+.lb {
+  fill:var(--fg);
+  font-size:16px;
+  font-weight:700;
+}
+.lbl {
+  stroke:var(--muted);
+  stroke-width:2;
+  fill:none;
+}
+.hot,.kv,.hs {
+  cursor:pointer;
+}
+.hot:hover,.kv:hover {
+  filter:brightness(1.15);
+}
+.badge text {
+  font-weight:800;
+  font-size:16px;
+  fill:#1a1726;
+  text-anchor:middle;
+}
+.ring {
+  transform-box:fill-box;
+  transform-origin:center;
+  animation:pulse 1.6s ease-out infinite;
+}
+.ok .ring {
+  display:none;
+}
+@keyframes pulse{from{transform:scale(1);opacity:.85}to{transform:scale(2.1);opacity:0}}
+.shake {
+  animation:shake .35s;
+}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.flow {
+  stroke-dasharray:8 10;
+  animation:dash 1.2s linear infinite;
+}
+@keyframes dash{to{stroke-dashoffset:-36}}
+.lt {
+  fill:#2A1233;
+  font-size:15px;
+  font-weight:800;
+  paint-order:stroke;
+  stroke:#fff;
+  stroke-width:5px;
+  stroke-linejoin:round;
+  text-anchor:middle;
+}
+.ll {
+  stroke:#2A1233;
+  stroke-width:2.5;
+  fill:none;
+}
+.hs .lab {
+  display:none;
+}
+.hs.ok .lab {
+  display:inline;
+}
+.hs .bg {
+  fill:#FFD166;
+}
+.hs.ok .bg {
+  fill:#3CDDC6;
+}
+
+/* ================================================================
+   10. TRACK EXTRAS
+   Track 2 ordering challenge, Track 5 game, Track 6 quiz.
+   ================================================================ */
+/* Track 2: ordering challenge */
+.ord {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:10px;
+}
+.ordb {
+  position:relative;
+  background:var(--bg);
+  border-radius:12px;
+  padding:14px 12px;
+  text-align:left;
+  min-height:76px;
+}
+.ordb b {
+  display:block;
+}
+.ordb span {
+  color:var(--muted);
+  font-size:14px;
+}
+.ordb.set {
+  outline:2px solid var(--cell);
+}
+.ordb .bn {
+  position:absolute;
+  top:8px;
+  right:8px;
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background:var(--cell);
+  color:#06221e;
+  font-weight:800;
+  display:none;
+  place-items:center;
+  font-size:13px;
+}
+.ordb.set .bn {
+  display:grid;
+}
+
+/* Track 5: Defense Squad game */
+.gamewrap {
+  position:relative;
+  border-radius:14px;
+  overflow:hidden;
+  background:var(--bg);
+}
+#gc {
+  display:block;
+  width:100%;
+  height:clamp(300px,50vh,440px);
+  touch-action:manipulation;
+}
+.hud {
+  position:absolute;
+  top:8px;
+  left:12px;
+  right:12px;
+  display:flex;
+  justify-content:space-between;
+  gap:8px;
+  flex-wrap:wrap;
+  font-weight:700;
+  font-size:14px;
+  pointer-events:none;
+}
+.ov {
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  background:rgba(14,13,22,.82);
+  padding:16px;
+}
+.ov .card {
+  max-width:440px;
+  text-align:left;
+}
+
+/* Track 6: quiz answers */
+.opts {
+  display:grid;
+  gap:10px;
+}
+.opt {
+  text-align:left;
+  padding:12px 14px;
+  border-radius:12px;
+  background:var(--bg);
+  border:2px solid transparent;
+  font-weight:600;
+}
+.opt:hover {
+  border-color:var(--line);
+}
+.opt.right {
+  border-color:var(--cell);
+}
+.opt.wrong {
+  border-color:var(--virus);
+}
+
+/* ================================================================
+   11. REDUCED MOTION
+   Turns animations off for people who ask their device for less motion.
+   ================================================================ */
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

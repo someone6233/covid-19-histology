@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Under the Microscope</title>
+
+  <!-- All colors and styling live in this one file (style.css) -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- The page has three areas. JavaScript fills each one in. -->
+  <div class="app">
+    <aside class="side" id="side"></aside>     <!-- left: library and track list -->
+    <main class="main" id="main"></main>       <!-- middle: album page or the current track -->
+    <footer class="player" id="player"></footer> <!-- bottom: player bar -->
+  </div>
+
+  <!-- Scripts load in this order. Keep main.js last. -->
+  <script src="config.js"></script>          <!-- EDIT THIS: names, track list, albums, all teaching text -->
+  <script src="helpers.js"></script>         <!-- progress saving, icons, cartoon virus and cover art -->
+  <script src="core.js"></script>            <!-- sidebar, player bar, album page, navigation -->
+  <script src="track1-cell.js"></script>     <!-- Track 1: Cell Introduction -->
+  <script src="track2-zoom.js"></script>     <!-- Track 2: Cellular Organization -->
+  <script src="track3-takeover.js"></script> <!-- Track 3: COVID-19 Invasion -->
+  <script src="track4-lung.js"></script>     <!-- Track 4: COVID-19 &amp; The Lungs -->
+  <script src="track5-game.js"></script>     <!-- Track 5: Protect the Lungs -->
+  <script src="track6-quiz.js"></script>     <!-- Track 6: Final Quiz -->
+  <script src="main.js"></script>            <!-- starts the app -->
+</body>
+</html>
