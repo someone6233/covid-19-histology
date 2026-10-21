@@ -18,7 +18,7 @@ T[1]=function(){
   }else if(i===1){
    for(var r=0;r<4;r++)for(var c=0;c<6;c++){var x=18+c*82+(r%2?41:0),y=30+r*62,hi=(r===1&&c===2);
     s+='<rect x="'+x+'" y="'+y+'" width="74" height="52" rx="18" fill="#F2B8C6" stroke="'+(hi?'#FFD166':'#C7708A')+'" stroke-width="'+(hi?5:3)+'"/><ellipse cx="'+(x+37)+'" cy="'+(y+26)+'" rx="11" ry="8" fill="#5B3A9A"/>';}
-   s+=lab(300,318,'Many similar cells, one team = a tissue',null,'middle')+lab(300,336,'Gold outline: one cell',null,'middle').replace('class="lb"','class="lb" style="font-weight:500;fill:#FFD166"');
+   s+=lab(300,318,'Many similar cells combined = a tissue',null,'middle')+lab(300,336,'Gold outline: one cell',null,'middle').replace('class="lb"','class="lb" style="font-weight:500;fill:#FFD166"');
   }else if(i===2){
    s+='<rect x="292" y="26" width="16" height="104" rx="8" fill="#8FB8D8"/><path d="M300 128 C296 160 270 180 245 205 M300 128 C304 160 330 180 355 205 M258 192 L225 214 M342 192 L375 214" stroke="#8FB8D8" stroke-width="9" stroke-linecap="round" fill="none"/>'+
     '<path d="'+LL+'" fill="#F29DB0" fill-opacity=".85" stroke="#C7708A" stroke-width="5"/><path d="'+RL+'" fill="#F29DB0" fill-opacity=".85" stroke="#C7708A" stroke-width="5"/>'+
