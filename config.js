@@ -24,7 +24,7 @@ var TRACKS=[
 var RECOMMENDATIONS=[
  {title:'Midnights',artist:'Taylor Swift',year:'2022',image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTM2Wn-CqX8W64GyogthDbI_UaFY_kqrOWOUZBhpzDPLQ&s'},
  {title:'Lover',artist:'Taylor Swift',year:'2019',image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzTDe1bvuKEUBkipaH6fxFhkZ7EdylswkSRenK1Y-Hjw&s=10'},
- {title:'folklore',artist:'Taylor Swift',year:'2020',image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHxA7FokIMuj7dzpgFwDbWkPnMrCxH6F8CFgkincK7eg&s=10'},
+ {title:'you seem pretty sad for a girl so in love',artist:'Olivia Rodrigo',year:'2026',image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT80tzPI6FGpmq8W6TsxF6xkm6kgRnfa6QxH9fazLIe1w&s'},
  {title:'1989 (Taylor\u2019s Version)',artist:'Taylor Swift',year:'2023',image:'https://upload.wikimedia.org/wikipedia/en/d/d5/Taylor_Swift_-_1989_%28Taylor%27s_Version%29.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original'},
  {title:'The Secret of Us',artist:'Gracie Abrams',year:'2024',image:'https://i.pinimg.com/564x/c5/da/20/c5da2065c5c2089159b815891c426ce4.jpg'},
  {title:'Good Riddance',artist:'Gracie Abrams',year:'2023',image:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVIl40Yg48_qjMqxDDeCv9Bn8sy-fLZ1lAYJ33UdFQEA&s=10'}
