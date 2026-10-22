@@ -25,9 +25,9 @@ T[5]=function(){
   };
  }
  function result(){
-  var badge=score===6?'Platinum record':score>=5?'Gold record':score>=4?'Silver record':'Bronze record';
+  var badge=score===6?'Yay, you did well!':score>=5?'Congrats, you did respectable!':score>=4?'Nice work!':'Oops, maybe you want to try again?';
   st.onclick=function(e){if(e.target.closest('#again')){qi=0;score=0;ask();}};
-  st.innerHTML='<div class="card"><p class="eyebrow">Final score</p><h3 style="font-size:32px">'+score+' out of '+Q.length+': '+badge+'</h3><p>You can explain how COVID-19 gets into a cell, what it does to the cell’s parts, and how that changes lung tissue.</p><div class="btnrow"><button class="btn ghost" id="again">Try again</button><button class="btn pri" data-go="-1">Back to the album</button></div></div>';
+  st.innerHTML='<div class="card"><p class="eyebrow">Final score</p><h3 style="font-size:32px">'+score+' out of '+Q.length+': '+badge+'</h3><p>By completeing this, you can now explain (roughly) how COVID-19 gets into a cell, what it does to the cell’s parts, and how that changes lung tissue.</p><div class="btnrow"><button class="btn ghost" id="again">Try again</button><button class="btn pri" data-go="-1">Back to the album</button></div></div>';
   finish(5);
  }
  ask();
