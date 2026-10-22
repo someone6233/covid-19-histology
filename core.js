@@ -37,7 +37,7 @@ function renderAlbum(){
  var rows=TRACKS.map(function(t,i){return '<button class="row" data-go="'+i+'"><span class="num">'+(i+1)+'</span><span class="tt"><b>'+t.title+'</b></span><span class="tag">'+t.tag+'</span><span class="tm">'+t.dur+'</span><span class="ck">'+(done[i]?I.check:'')+'</span></button>';}).join('');
  main.innerHTML='<div class="hero"><div>'+coverSVG(220,true)+'</div><div class="htxt"><p class="eyebrow">Album</p><h1 class="big">Under the Microscope</h1><p class="meta"><b>'+ARTIST+'</b> · COVID-19 edition · '+N+' tracks · about 15 min</p><p class="lede">What does a virus do to your cells? Press play and find out. Tap, spot, build and play your way through six short tracks.</p></div></div>'+
  '<div class="body"><div class="actions"><button class="playbig" data-play aria-label="Play album">'+I.play+'</button><span class="prog-txt">'+doneCount()+' of '+N+' tracks finished</span></div>'+
- (doneCount()===N?'<div class="done-card"><b>Album complete.</b> You now know how COVID-19 gets into a cell, what it does to lung tissue, and how the body fights back. Tell a friend one thing you learned.</div>':'')+
+ (doneCount()===N?'<div class="done-card"><b>Album complete.</b> You now know (roughly) how COVID-19 gets into a cell, what it does to lung tissue, and how the body fights back.</div>':'')+
  '<div class="thr"><span>#</span><span>Title</span><span class="tg">Science focus</span><span>Time</span><span></span></div>'+rows+
  recHTML()+'</div>';
 }
