@@ -22,7 +22,7 @@ function firstTodo(){for(var i=0;i<N;i++){if(!done[i])return i;}return 0;}
 
 /* ---------- "You might also enjoy" section on the album page ---------- */
 function recHTML(){
- return '<section class="rec"><h2>You might also enjoy</h2><p class="meta">Albums to play after your science break</p><div class="recgrid">'+
+ return '<section class="rec"><h2>You might also enjoy</h2><p class="meta">Albums you should listen to</p><div class="recgrid">'+
   RECOMMENDATIONS.map(function(r){
    var has=!!r.image;
    return '<div class="rcard"><div class="rcover'+(has?'':' noimg')+'">'+
