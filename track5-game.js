@@ -8,7 +8,7 @@ T[4]=function(){
  var st=$('#stage');
  st.innerHTML='<div class="card"><h3>How to play</h3><p>Viruses fall onto the lung lining. <b>Tap a virus</b> to stop it with antibodies. If a cell turns red, <b>tap it</b> so a killer T cell removes it before it bursts. Lost cells grow back, because lungs can repair themselves.</p></div>'+
   '<div class="gamewrap"><canvas id="gc" aria-label="Lung defense game"></canvas><div class="hud"><span id="g-time">45s</span><span id="g-score">Viruses stopped: 0</span><span id="g-health">Lung health: 100%</span></div>'+
-  '<div class="ov" id="g-ov"><div class="card"><h3>Defense Squad</h3><p>Protect the lung lining for 45 seconds. Use the power-ups below when you need them.</p><button class="btn pri" id="g-go">Start</button></div></div></div>'+
+  '<div class="ov" id="g-ov"><div class="card"><h3>Try This Game!</h3><p>Protect the lung lining for 45 seconds. Use the power-ups below when you need them.</p><button class="btn pri" id="g-go">Start</button></div></div></div>'+
   '<div class="btnrow"><button class="btn ghost" id="pu-mask" title="Blocks about half of the viruses for 8 seconds">Mask</button><button class="btn ghost" id="pu-boost" title="Antibodies pop viruses by themselves for 8 seconds">Vaccine boost</button></div>';
  var cv=$('#gc'),ctx=cv.getContext('2d'),TAU=Math.PI*2;
  var W=300,H=300,dpr=1,cells=[],vir=[],fx=[],raf=0,run=false,tleft=45,spawnT=0,score=0,mask=0,boost=0,maskCd=0,boostCd=0,boostT=0,last=0;
