@@ -29,7 +29,7 @@ T[3]=function(){
   hs('wall',B[0],B[1]-B[2]-4,4,lab(B[0]+30,28,'Swollen wall'))+
   '</g>';
  var CL=TISSUE_CLUES;
- st.innerHTML='<div class="card"><h3>How scientists see tissue</h3><p>This is lung tissue under a microscope. Scientists stain it so the parts show up in different colors. Look at the healthy lung first. Then switch to the COVID-19 lung and find 4 clues.</p><div class="seg"><button class="segb on" data-v="h">1. Healthy lung</button><button class="segb" data-v="i">2. COVID-19 lung</button></div></div>'+
+ st.innerHTML='<div class="card"><h3>How scientists see tissue</h3><p>This is lung tissue under a microscope. Scientists stain it so the parts show up in different colors. Look at the healthy lung first. Then switch to the COVID-19 lung and find 4 clues. NOTE: we plan to update these images with histologica/diagram slides :)</p><div class="seg"><button class="segb on" data-v="h">1. Healthy lung</button><button class="segb" data-v="i">2. COVID-19 lung</button></div></div>'+
   '<div class="two wide"><div class="card art"><svg id="lsvg" viewBox="0 0 640 400" role="group" aria-label="Lung tissue under a microscope"><rect width="640" height="400" rx="10" fill="#F2A9BC"/>'+healthy+inf+'</svg></div><div style="display:flex;flex-direction:column;gap:12px;min-width:0"><div class="card" id="lt"></div><div class="card"><b>Clues to find</b><div class="pills" id="lp"></div></div></div></div>';
  var view='h',got={},svg=$('#lsvg');
  function pills(){$('#lp').innerHTML=Object.keys(CL).map(function(k,i){return '<span class="pill'+(got[k]?' on':'')+'">'+(i+1)+'. '+(got[k]?CL[k][0]:CL[k][3])+'</span>';}).join('');}
