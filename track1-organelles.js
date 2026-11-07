@@ -52,7 +52,7 @@ T[0] = function(){
   if (k === b.part){
    solved = true;
    if (attempts === 1 && !hintUsed) firstTry++;
-   $('#cellbox svg').insertAdjacentHTML('beforeend', '<text class="lt" x="300" y="436" style="fill:#3CDDC6;stroke:#06221e">Bug fixed!</text>');
+   $('#cellbox svg').insertAdjacentHTML('beforeend', '<text class="lt" x="300" y="436" style="fill:#3CDDC6;stroke:#06221e">Error fixed!</text>');
    fb.className = 'fb good';
    fb.innerHTML = 'Fixed! <b>'+CELL_PARTS[k].name+'</b>. '+b.why;
    $('#bbtns').innerHTML = '<button class="btn pri" id="bnext">'+(i < BUGS.length - 1 ? 'Next error' : 'See results')+'</button>';
