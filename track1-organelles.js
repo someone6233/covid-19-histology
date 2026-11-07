@@ -26,7 +26,7 @@ T[0] = function(){
   solved = false; attempts = 0; hintUsed = false;
   $('#bugcard').innerHTML = '<p class="eyebrow">Bug '+(i + 1)+' of '+BUGS.length+'</p>'+
    '<h3>Error report</h3><p>'+b.report+'</p>'+
-   '<p class="fb" id="bfb">Tap the organelle that is causing this bug.</p>'+
+   '<p class="fb" id="bfb">Tap the organelle that is causing this error.</p>'+
    '<div class="btnrow" id="bbtns"><button class="btn ghost" id="bhint">Show a hint</button></div>';
   drawCell();
  }
@@ -65,7 +65,7 @@ T[0] = function(){
  });
 
  function showDone(){
-  st.innerHTML = '<div class="card"><p class="eyebrow">YAY NO ERRORS!</p><h3>You fixed them all '+BUGS.length+' bugs.</h3>'+
+  st.innerHTML = '<div class="card"><p class="eyebrow">YAY NO ERRORS!</p><h3>You fixed all '+BUGS.length+' errors.</h3>'+
    '<p>You got '+firstTry+' of '+BUGS.length+' right on the first try, without a hint. Each error was the job of one organelle breaking.</p>'+
    '<p class="meta">Next, you will see how these errors in cells add up to whole organs and organ systems.</p></div>';
   finish(0);
