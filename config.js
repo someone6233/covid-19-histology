@@ -108,7 +108,7 @@ var QUIZ = [
   {q:'Which part of the cell holds the DNA instructions?', a:['Nucleus','Cytoplasm','Cell membrane','Mitochondria'], e:'The nucleus stores the DNA instructions for the cell.'},
   {q:'Which structure has the ACE2 docking proteins that the spike protein binds to?', a:['Cell membrane','Nucleus','Mitochondria','Cell wall'], e:'The membrane holds ACE2 proteins, which the spike protein can grab.'},
   {q:'Where is the virus’s RNA read to make virus proteins?', a:['In the cytoplasm','Only in the nucleus','In the air sacs','In red blood cells'], e:'Ribosomes in the cytoplasm read the viral RNA.'},
-  {q:'A group of similar cells that work together is called a…', a:['Tissue','Organ','Organ system','Cell'], e:'Lung lining cells team up to form lung lining tissue.'},
+  {q:'A group of similar cells that work together is called a…', a:['Tissue','Organelle','Organ system','Nucleus'], e:'Lung lining cells team up to form lung lining tissue.'},
   {q:'The lungs are made of several tissues working together. That makes them…', a:['An organ','A single cell','An organelle','A membrane'], e:'Organs are made of different tissues. Organs team up in organ systems.'},
   {q:'Why does fluid in the air sacs make breathing hard?', a:['Oxygen cannot easily get through to the blood','The lungs get too much oxygen','The nucleus stops working','The cells grow extra mitochondria'], e:'Air sacs need to be open for better oxygen exchange, so then, easier breathing in return.'},
   {q:'Which immune cell can find and destroy infected cells?', a:['Killer T cell','Red blood cell','Lining cell','Mitochondria'], e:'Killer T cells remove infected cells before they make many more copies.'}
