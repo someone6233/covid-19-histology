@@ -284,6 +284,26 @@ svg text { font-family: var(--body); }
 /* dial readouts (Track 4) */
 .meter span b { color: var(--fg); }
 
+/* treatment and vaccine pictures (Tracks 6 and 7) */
+.vroad { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+.vn { width: 46px; height: 46px; border-radius: 50%; background: var(--bg); border: 3px solid var(--line); display: grid; place-items: center; flex: none; }
+.vn svg { width: 28px; height: 28px; }
+.vn.on { border-color: var(--gold); }
+.vn.ok { border-color: var(--cell); color: var(--cell); }
+.vl { width: 14px; height: 3px; border-radius: 2px; background: var(--line); flex: none; }
+.tiles { display: flex; flex-wrap: wrap; gap: 4px; }
+.mon { display: inline-block; width: 18px; height: 18px; border-radius: 5px; background: var(--bg); border: 2px solid var(--line); }
+.mon.used { background: var(--virus); border-color: var(--virus); }
+.mon.over { background: var(--gold); border-color: var(--gold); }
+.mon.spare { background: var(--cell); border-color: var(--cell); }
+.vhead { display: flex; gap: 14px; align-items: center; }
+.vhead svg { flex: none; }
+.vopts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.opt.vopt { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; gap: 8px; padding: 14px 10px; }
+.opt.vopt svg { flex: none; }
+.opt.vopt .tiles { justify-content: center; }
+.opt.vopt .mon { width: 12px; height: 12px; border-radius: 3px; }
+
 /* ================================================================
    11. REDUCED MOTION
    ================================================================ */
