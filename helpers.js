@@ -5,12 +5,12 @@
 'use strict';
 var N = TRACKS.length;
 var done = {};
-try { JSON.parse(localStorage.getItem('utm-done-v2') || '[]').forEach(function(i){ done[i] = 1; }); } catch(e) {}
-function saveDone(){ try { localStorage.setItem('utm-done-v2', JSON.stringify(Object.keys(done).map(Number))); } catch(e) {} }
+try { JSON.parse(localStorage.getItem('utm-done-v3') || '[]').forEach(function(i){ done[i] = 1; }); } catch(e) {}
+function saveDone(){ try { localStorage.setItem('utm-done-v3', JSON.stringify(Object.keys(done).map(Number))); } catch(e) {} }
 function doneCount(){ return Object.keys(done).length; }
 
 /* Wrapped stats, saved between tracks and visits */
-var STATS = {playlist:[], energy:null, quiz:null, bugs:null, sorted:null, lowO2:null};
+var STATS = {playlist:[], energy:null, quiz:null, bugs:null, sorted:null, lowO2:null, vaccine:null};
 try { var sv = JSON.parse(localStorage.getItem('utm-stats-v3')); if (sv) STATS = Object.assign(STATS, sv); } catch(e) {}
 function saveStats(){ try { localStorage.setItem('utm-stats-v3', JSON.stringify(STATS)); } catch(e) {} }
 
