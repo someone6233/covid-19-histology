@@ -62,7 +62,7 @@ document.addEventListener('click', function(e){
  var s = e.target.closest('[data-step]'); if (s){ go(Math.max(-1, Math.min(N - 1, cur + parseInt(s.getAttribute('data-step'), 10)))); return; }
  var rs = e.target.closest('[data-reset]');
  if (rs){
-  if (rs.getAttribute('data-arm')){ done = {}; STATS = {playlist:[], energy:null, quiz:null, bugs:null, sorted:null, lowO2:null}; saveDone(); saveStats(); go(-1); }
+  if (rs.getAttribute('data-arm')){ done = {}; STATS = {playlist:[], energy:null, quiz:null, bugs:null, sorted:null, lowO2:null, vaccine:null}; saveDone(); saveStats(); go(-1); }
   else { rs.setAttribute('data-arm', '1'); rs.textContent = 'Tap again to reset'; setTimeout(function(){ if (rs.isConnected){ rs.removeAttribute('data-arm'); rs.textContent = 'Start over'; } }, 3000); }
  }
 });
