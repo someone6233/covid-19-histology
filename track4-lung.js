@@ -25,6 +25,65 @@ T[3] = function(){
   '<div class="meter"><span>Breathing rate: <b id="br"></b> breaths per minute</span><div class="mbar"><span id="brb" style="background:#FF5D7A"></span></div></div></div>'+
   '<div class="card"><h3 id="lh">Healthy lungs</h3><p id="lx"></p></div></div>';
 
+ /* Build a person: age slider + drag conditions onto the person to see the risk meter move. */
+ var conds = {}, dragging = null;
+ st.insertAdjacentHTML('beforeend', '<div class="card" id="risk"><h3>Build a person and check the risk</h3>'+
+  '<p>Move the age slider. Then drag a health condition onto the person to add it. Drag it onto the person again to remove it. This is a teaching model, not a real risk calculator.</p>'+
+  '<div class="two"><div class="card art">'+
+   '<svg id="person" viewBox="0 0 200 240" role="img" aria-label="A person. Drag health conditions onto this drawing.">'+
+    '<rect x="6" y="6" width="188" height="228" rx="16" fill="none" stroke="#3CDDC6" stroke-width="3" stroke-dasharray="8 8"/>'+
+    '<circle id="phead" cx="100" cy="62" r="38" fill="#3CDDC6"/>'+
+    '<rect id="pbody" x="48" y="112" width="104" height="100" rx="42" fill="#3CDDC6"/>'+
+    '<text class="lb" x="100" y="228" text-anchor="middle">Drop conditions here</text></svg>'+
+   '<div class="rl"><span>Age</span><b id="rage">20</b></div>'+
+   '<input id="rAge" type="range" min="2" max="90" value="20" aria-label="Age">'+
+  '</div><div class="card">'+
+   '<div class="pills" id="rconds">'+RISK_CONDITIONS.map(function(c, i){ return '<button class="pill" data-cond="'+i+'" style="touch-action:none">'+c.t+'</button>'; }).join('')+'</div>'+
+   '<div class="meter"><span>Risk meter: <b id="rval"></b></span><div class="mbar"><span id="rbar"></span></div></div>'+
+   '<h3 id="rlabel"></h3><p id="rwhy"></p>'+
+  '</div></div>'+
+  '<p class="meta">'+RISK_NOTE+'</p></div>');
+
+ function riskUpdate(){
+  var age = +$('#rAge').value;
+  $('#rage').textContent = age;
+  var ageScore = age < 18 ? 3 : Math.min(40, (age - 18) * 0.5);
+  var condScore = 0, names = [];
+  RISK_CONDITIONS.forEach(function(c, i){ if (conds[i]){ condScore += c.pts; names.push(c.t); } });
+  var score = Math.round(Math.min(100, ageScore + condScore));
+  $('#rval').textContent = score + ' out of 100';
+  $('#rbar').style.width = score + '%';
+  $('#rbar').style.background = score >= 50 ? 'var(--virus)' : score >= 25 ? 'var(--gold)' : 'var(--cell)';
+  $('#rlabel').textContent = score < 25 ? 'Lower risk' : score < 50 ? 'Moderate risk' : 'Higher risk';
+  var fill = score >= 50 ? '#FF5D7A' : score >= 25 ? '#FFD166' : '#3CDDC6';
+  $('#phead').setAttribute('fill', fill); $('#pbody').setAttribute('fill', fill);
+  var why = age < 18 ? 'Children have been less affected than adults, though some children with medical conditions are at higher risk.' : 'Age adds '+Math.round(ageScore)+' points. Risk climbs with age, even without other conditions.';
+  why += names.length ? ' Conditions add '+condScore+' points: '+names.join(', ')+'.' : ' No conditions are added yet.';
+  $('#rwhy').textContent = why;
+  $$('[data-cond]').forEach(function(c){ c.classList.toggle('on', !!conds[+c.getAttribute('data-cond')]); });
+ }
+ function moveChip(e){
+  dragging.el.style.left = (e.clientX - 60) + 'px';
+  dragging.el.style.top = (e.clientY - 18) + 'px';
+ }
+ st.addEventListener('pointerdown', function(e){
+  var c = e.target.closest('[data-cond]'); if (!c) return;
+  e.preventDefault();
+  dragging = {el:c, i:+c.getAttribute('data-cond')};
+  c.style.position = 'fixed'; c.style.pointerEvents = 'none'; c.style.zIndex = '1000';
+  moveChip(e);
+ });
+ window.addEventListener('pointermove', function(e){ if (dragging) moveChip(e); });
+ window.addEventListener('pointerup', function(e){
+  if (!dragging) return;
+  var d = dragging; dragging = null;
+  d.el.style.position = ''; d.el.style.left = ''; d.el.style.top = ''; d.el.style.pointerEvents = ''; d.el.style.zIndex = '';
+  var under = document.elementFromPoint(e.clientX, e.clientY);
+  if (under && under.closest && under.closest('#person')){ conds[d.i] = !conds[d.i]; riskUpdate(); }
+ });
+ st.addEventListener('input', function(e){ if (e.target.id === 'rAge') riskUpdate(); });
+ riskUpdate();
+
  function drawScene(f, inf, m){
   var nFluid = Math.round(f / 100 * 16), nInf = Math.round(inf / 100 * 16), nImm = Math.round(m / 100 * 5);
   var s = '<rect width="600" height="400" rx="12" fill="#F2A9BC"/>';
