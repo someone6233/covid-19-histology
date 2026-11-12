@@ -1,11 +1,11 @@
 /* ======================================================================
-   Track 6: Your Wrapped
+   Track 8: Your Wrapped
    A Wrapped-style slideshow built from everything the student did.
    One slide is the Guess-the-Song quiz, played inside the slideshow.
    ====================================================================== */
 'use strict';
 
-T[5] = function(){
+T[7] = function(){
  var st = $('#stage');
  var Q = QUIZ;
  var score = 0;
@@ -19,6 +19,7 @@ T[5] = function(){
   var bugs = STATS.bugs === null ? '—' : STATS.bugs;
   var sorted = STATS.sorted === null ? '—' : STATS.sorted;
   var low = STATS.lowO2 === null ? '—' : STATS.lowO2 + '%';
+  var vac = STATS.vaccine === null ? '—' : STATS.vaccine >= 0 ? STATS.vaccine + ' months to spare' : 'Too late';
   var songs = STATS.playlist.length;
   return [
    {bg:'linear-gradient(160deg,#4A1B3A,#171525 60%,#0E0D16)', kicker:'Your Cell Biology Wrapped', big:'Let’s go', text:'Here is everything you explored!'},
@@ -28,6 +29,7 @@ T[5] = function(){
    {bg:'linear-gradient(160deg,#FFD166,#4A1B3A 75%,#0E0D16)', kicker:'Lung Damage', big:low, text:'The lowest oxygen you pushed the lungs to. Reminder: less oxygen means harder breathing.'},
    {bg:'linear-gradient(160deg,#3CDDC6,#8B7BFF 80%,#0E0D16)', kicker:'Your symptom playlist', big:songs + ' songs', text:'You built a playlist of COVID-19 symptoms, yay.'},
    {bg:'linear-gradient(160deg,#FF5D7A,#3A1634 70%,#0E0D16)', kicker:'COVID-19 Infection', big:energy, text:'cell energy left after the virus took over. Maybe next time you can try to make this higher!'},
+   {bg:'linear-gradient(160deg,#FFD166,#3CDDC6 80%,#0E0D16)', kicker:'Vaccine race', big:vac, text:'in the race to deliver a vaccine before the virus spread too far.'},
    {type:'quiz', bg:'linear-gradient(160deg,#FFD166,#8B7BFF 80%,#0E0D16)', kicker:'Guess the Song'},
    {type:'final', bg:'linear-gradient(160deg,#4A1B3A,#0E0D16)', kicker:'That’s a wrap (im so funny)', big:'Thanks for playing!', text:''}
   ];
@@ -82,7 +84,7 @@ T[5] = function(){
     }
    }
    if (e.target.closest('#wnext')){
-    if (isLast){ finish(5); st.innerHTML = '<div class="card"><p class="meta">Wrapped complete. Head back to the album to replay any song.</p><div class="btnrow"><button class="btn pri" data-go="-1">Back to the album</button></div></div>'; }
+    if (isLast){ finish(7); st.innerHTML = '<div class="card"><p class="meta">Wrapped complete. Head back to the album to replay any song.</p><div class="btnrow"><button class="btn pri" data-go="-1">Back to the album</button></div></div>'; }
     else show(list, idx + 1, 0);
    }
    if (e.target.closest('#wprev') && idx > 0){ show(list, idx - 1, 0); }
