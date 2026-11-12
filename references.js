@@ -20,6 +20,15 @@
     '<li style="padding-left:2em;text-indent:-2em;margin-bottom:12px">'+
      'Brown, J. (2026). <em>Cells: Cytoplasm</em> [Unpublished lecture notes]. '+
      'Vertebrate Histology: BIOC21, University of Toronto Scarborough.</li>'+
+    '<li style="padding-left:2em;text-indent:-2em;margin-bottom:12px">'+
+     'Centers for Disease Control and Prevention. (2020, June 25). <em>CDC updates, expands list of people at risk of severe COVID-19</em> [News release]. '+
+     'https://archive.cdc.gov/www_cdc_gov/media/releases/2020/p0625-update-expands-covid-19.html</li>'+
+    '<li style="padding-left:2em;text-indent:-2em;margin-bottom:12px">'+
+     'Kulshreshth, A., et al. (2022). COVID-19 therapy: What works? What doesn’t? And what’s on the horizon? <em>The Journal of Family Practice, 71</em>(7), E3–E16. '+
+     'https://doi.org/10.12788/jfp.0474</li>'+
+    '<li style="padding-left:2em;text-indent:-2em;margin-bottom:12px">'+
+     'Press Herald. (2020, December 11). <em>First coronavirus vaccine receives FDA emergency use authorization</em> [News article]. '+
+     'https://www.pressherald.com/?p=5771447</li>'+
    '</ul>'+
   '</div>';
 
